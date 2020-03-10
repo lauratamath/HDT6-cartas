@@ -22,7 +22,7 @@ public interface InterfaceMap<K, V>{
 	Pre: Se cuenta con una llave y un valor
 	Post: Se asigna un valor a la llave
 	*/
-	public V put(K k, V v);
+	public void put(K k, V v);
 
 	/**
 	Pre: La llave existe
@@ -33,7 +33,7 @@ public interface InterfaceMap<K, V>{
 
 	/**
 	Pre: La llave existe
-	Post: Se remueve el valor de la llave y  la llave
+	Post: Se remueve el valor de la llave y la llave, ademas de que retorna el valor removido
 	*/
 	public V remove(K k);
 

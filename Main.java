@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -21,11 +22,13 @@ public class Main {
 		Scanner teclado = new Scanner (System.in);
 		String key;
 		String val;
+		
 		boolean comprobante;
 		System.out.println("Introduzca el tipo de mapa que desea utilizar");
 		System.out.println("1.HashMap.    2.LinkedHashMap.    3.TreeMap.");
 		String tipo = teclado.nextLine();
 		InterfaceMap<String,String> map = factory.getMap(tipo);
+		InterfaceMap<String,String> mapC = factory.getMap(tipo);
 		if (map instanceof Hash) {
 			System.out.println("El mapa a utilizar es: HashMap");
 		}
@@ -59,12 +62,11 @@ public class Main {
 	    		  if (comprobante == true) {
 	    			  val = val + linea.substring(i, i+1);
 	    		  }
-	    		  //System.out.println(val);
-	    		  //System.out.println(key);
+	    		  
 	    	  }
 	    	  map.put(key,val);
-    		  System.out.println(map.get(key));
-	    	  //System.out.prin+tln(linea);
+    		 // System.out.println(map.get(key));
+	    	  
 	    	  
 	      }
 	    	  
@@ -74,6 +76,66 @@ public class Main {
 	    catch(Exception e) {
 	      System.out.println("Excepcion leyendo fichero "+ documento + ": " + e);
 	    }
+	    int n = 0;
+	    int r = 0;
+	    int i = 0;
+	    
+	    do {
+	    	System.out.println("Que desea hacer?");
+	    	System.out.println("1.Agregar una carta a la coleccion\n2.Datos de cartas\n3.Datos de cartas en la coleccion\n4.Salir");
+	    	n = teclado.nextInt();
+	    	if (n == 1) {
+	    		System.out.println("Ingrese el nombre de la carta que desea agregar");
+	    		key = teclado.nextLine();
+	    		if (map.containsKey(key)) {
+	    			mapC.put(key, map.get(key));
+	    		}else {
+	    			System.out.println("La carta ingresada no existe");
+	    		}
+	    	}
+	    	if (n == 2) {
+	    		do {
+	    			System.out.println("1.Mostrar tipo de una carta\n2.Mostrar Cartas (desordenadas)\n3.Mostrar Cartas (Ordenadas por tipo)");
+		    		r = teclado.nextInt();
+		    		if (r == 1) {
+		    			System.out.println("Ingrese el nombre de la carta");
+			    		key = teclado.nextLine();
+			    		if (map.containsKey(key)) {
+			    			System.out.println("Carta: " + key + " Tipo: " + map.get(key));
+			    		}else {
+			    			System.out.println("La carta ingresada no existe");
+			    		}
+		    		}
+		    		if (r == 2) {
+		    			for (Map.Entry<String, String> cartas:map.entrySet())
+		    			{
+		    				System.out.println(cartas.getKey() + " " + cartas.getValue());
+		    			}
+		    		}
+		    		if (r == 3) {
+	
+		    		}
+	    		}while (r<4);
+	    		
+	    	}
+	    	if (n == 3) {
+	    		do {
+	    			System.out.println("1.Mostrar Cartas (desordenadas)\n2.Mostrar Cartas (Ordenadas por tipo)");
+		    		i = teclado.nextInt();
+		    		if (i == 1) {
+		    			
+		    		}
+		    		if (i == 2) {
+		    			
+		    		}
+	    		}while (i<3);
+	    		
+	    	}
+	    	
+	    	
+		    
+		    
+	    }while (n<0);
 	    
 	}
 

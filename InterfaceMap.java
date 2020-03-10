@@ -52,4 +52,6 @@ public interface InterfaceMap<K, V>{
 
 
 	public Set<Map.Entry<K,V>> entrySet();
+	
+
 }

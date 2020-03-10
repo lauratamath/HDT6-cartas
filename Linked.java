@@ -83,6 +83,6 @@ public class Linked<K,V> implements InterfaceMap<K,V> {
 	@Override
 	public Set<Entry<K, V>> entrySet() {
 		// TODO Auto-generated method stub
-		return null;
+		return map.entrySet();
 	}
 }

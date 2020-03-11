@@ -88,8 +88,9 @@ public class Main {
 	    	System.out.println("1.Agregar una carta a la coleccion\n2.Datos de cartas\n3.Datos de cartas en la coleccion\n4.Salir");
 	    	n = teclado.nextInt();
 	    	if (n == 1) {
+	    		Scanner sc = new Scanner (System.in);
 	    		System.out.println("Ingrese el nombre de la carta que desea agregar");
-	    		key = teclado.nextLine();
+	    		key = sc.nextLine();
 	    		if (map.containsKey(key)) {
 	    			mapC.put(key, map.get(key));
 	    		}else {

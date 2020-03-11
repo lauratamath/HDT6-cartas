@@ -136,7 +136,7 @@ public class Main {
 		    			cartord.add(0,"Tipo__________ : Nombre________");
 		    			cartord.add(0, "______________________________");
 		    			for (Map.Entry<String, String> entry : userCollection.entrySet()){
-		    				cartord.add(entry.getValue() + " : " + entry.getKey());
+		    				cartord.add(entry.getKey() + " : " + entry.getValue());
 		    				if (entry.getValue().equalsIgnoreCase("trampa")){
 		    					trampa++;
 		    				}	else if (entry.getValue().equalsIgnoreCase("hechizo")){

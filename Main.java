@@ -58,6 +58,7 @@ public class Main {
 	    	  
 	    	  for (int i = 0; i<linea.length();i++) {
 	    		  if (!linea.substring(i, i+1).equals("|")&& comprobante == false ) {
+	    			 
 	    			 key = key +  linea.substring(i, i+1);
 	    			
 	    		  }if (linea.substring(i, i+1).equals("|") ) {
@@ -68,9 +69,18 @@ public class Main {
 	    		  }
 	    		  
 	    	  }
+	    	  if (key.substring(0, 1).equals(" ")) {
+ 				 key = key.substring(1, key.length());
+ 				 //System.out.println(key);
+ 			 }
+	    	  if (val.substring(0, 1).equals(" ")) {
+	 				 val = val.substring(1, val.length());
+	 				 System.out.println(val);
+	 			 }
+	    	  
 	    	  //System.out.println(val);
 	    	  map.put(key,val);
-    		  System.out.println(map.get(key));
+    		  //System.out.println(map.get(key));
 	    	  
 	    	  
 	      }
@@ -87,7 +97,7 @@ public class Main {
 	    
 	    do {
 	    	System.out.println("Que desea hacer?");
-	    	System.out.println(map.get(" Altergeist Pixiel"));
+	    	
 	    	System.out.println("1.Agregar una carta a la coleccion\n2.Datos de cartas\n3.Datos de cartas en la coleccion\n4.Salir");
 	    	n = teclado.nextInt();
 	    	if (n == 1) {
@@ -101,11 +111,12 @@ public class Main {
 	    		}
 	    	}
 	    	if (n == 2) {
-	    		do {
+	    		
 	    			System.out.println("1.Mostrar tipo de una carta\n2.Mostrar Cartas (desordenadas)\n3.Mostrar Cartas (Ordenadas por tipo)");
 		    		r = teclado.nextInt();
 		    		if (r == 1) {
 		    			System.out.println("Ingrese el nombre de la carta");
+		    			teclado.nextLine();
 			    		key = teclado.nextLine();
 			    		if (map.containsKey(key)) {
 			    			System.out.println("Carta: " + key + " Tipo: " + map.get(key));
@@ -145,11 +156,11 @@ public class Main {
 		    			System.out.println(cartord) ;
 
 		    		}
-	    		}while (r<4);
+	    		
 	    		
 	    	}
 	    	if (n == 3) {
-	    		do {
+	    		
 	    			System.out.println("1.Mostrar Cartas (desordenadas)\n2.Mostrar Cartas (Ordenadas por tipo)");
 		    		i = teclado.nextInt();
 		    		if (i == 1) {
@@ -208,14 +219,14 @@ public class Main {
 
 		    			System.out.println(cartord) ;
 		    		} 
-	    		}while (i<3);
+	    		
 	    		
 	    	}
 	    	
 	    	
 		    
 		    
-	    }while (n<0);
+	    }while (n<4);
 	    
 	}
 

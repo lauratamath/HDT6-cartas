@@ -4,8 +4,8 @@ import java.util.*;
 /**
  * @author Orlando Cabrera
  * @author Laura Tamath
- *@since 08/03/2020
- *@version /03/2020
+ * @since 08/03/2020
+ * @version /03/2020
  * Clase que utilizara Map: HashMap
  */
 public class Hash<K,V> implements InterfaceMap <K,V> {

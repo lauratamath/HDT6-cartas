@@ -1,13 +1,15 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.Map;
-import java.util.Scanner;
+// import java.io.BufferedReader;
+// import java.io.FileReader;
+// import java.util.Map;
+// import java.util.Scanner;
 
+import java.util.*;
+import java.io.*; 
 /**
  * @author Orlando Cabrera
  * @author Laura Tamath
  * @since 08/03/2020
- * @version /03/2020
+ * @version 10/03/2020
  * Codigo para leer archivos sacado de: https://blog.openalfa.com/como-leer-un-fichero-de-texto-linea-a-linea-en-java
  * Main
  */
@@ -16,8 +18,10 @@ public class Main {
 	/**
 	 * @param args
 	 */
+	static InterfaceMap<String, String> userCollection;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
 		Factory<String,String> factory = new Factory<String,String>();
 		Scanner teclado = new Scanner (System.in);
 		String key;
@@ -122,12 +126,61 @@ public class Main {
 	    		do {
 	    			System.out.println("1.Mostrar Cartas (desordenadas)\n2.Mostrar Cartas (Ordenadas por tipo)");
 		    		i = teclado.nextInt();
+		    		ArrayList<String> valu = new ArrayList<String>();
 		    		if (i == 1) {
-		    			
-		    		}
+		    			ArrayList<String> cartord = new ArrayList<String>();
+		    			int trampa = 0;
+		    			int hechizo = 0;
+		    			int monstruo = 0;
+
+		    			cartord.add(0,"Tipo__________ : Nombre________");
+		    			cartord.add(0, "______________________________");
+		    			for (Map.Entry<String, String> entry : userCollection.entrySet()){
+		    				cartord.add(entry.getValue() + " : " + entry.getKey());
+		    				if (entry.getValue().equalsIgnoreCase("trampa")){
+		    					trampa++;
+		    				}	else if (entry.getValue().equalsIgnoreCase("hechizo")){
+		    					hechizo++;
+		    				} else if (entry.getValue().equalsIgnoreCase("monstruo")){
+		    					monstruo++;
+		    				}
+		    			}
+		    			cartord.add("Tipo de monstruo: "+ monstruo);
+		    			cartord.add("Tipo de hechizo: "+ hechizo);
+		    			cartord.add("Tipo de trampa: "+ trampa);
+		    			System.out.println(cartord) ;
+
+		    		}//Mostrar las cartas ordenadas por tipo
 		    		if (i == 2) {
-		    			
-		    		}
+		    			ArrayList<String> cartord = new ArrayList<String>();
+		    			int trampa = 0;
+		    			int hechizo = 0;
+		    			int monstruo = 0;
+
+		    			//Para eliminar las llaves duplicadas
+		    			LinkedHashSet<String> hashSet = new LinkedHashSet<String>(valu);
+		    			ArrayList<String> newVal = new ArrayList<>(hashSet);
+
+		    			//Luego de eliminar, se obtiene el tipo y nombre
+		    			for (Map.Entry<String, String> entry : userCollection.entrySet()){
+		    				cartord.add(entry.getValue() + " : " + entry.getKey());
+		    				if (entry.getValue().equalsIgnoreCase("trampa")){
+		    					trampa++;
+		    				}	else if (entry.getValue().equalsIgnoreCase("hechizo")){
+		    					hechizo++;
+		    				} else if (entry.getValue().equalsIgnoreCase("monstruo")){
+		    					monstruo++;
+		    				}
+		    			} Collections.sort(cartord);
+		    			cartord.add(0,"Tipo__________ : Nombre________");
+		    			cartord.add(0, "______________________________");
+		    			cartord.add(0, "______________________________");
+		    			cartord.add("Tipo de monstruo: "+ monstruo);
+		    			cartord.add("Tipo de hechizo: "+ hechizo);
+		    			cartord.add("Tipo de trampa: "+ trampa);
+
+		    			System.out.println(cartord) ;
+		    		} 
 	    		}while (i<3);
 	    		
 	    	}

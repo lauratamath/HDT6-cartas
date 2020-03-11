@@ -18,7 +18,6 @@ public class Main {
 	/**
 	 * @param args
 	 */
-	static InterfaceMap<String, String> userCollection;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -26,13 +25,13 @@ public class Main {
 		Scanner teclado = new Scanner (System.in);
 		String key;
 		String val;
-		
+		ArrayList<String> valu = new ArrayList<String>();
 		boolean comprobante;
 		System.out.println("Introduzca el tipo de mapa que desea utilizar");
 		System.out.println("1.HashMap.    2.LinkedHashMap.    3.TreeMap.");
 		String tipo = teclado.nextLine();
-		InterfaceMap<String,String> map = factory.getMap(tipo);
-		InterfaceMap<String,String> mapC = factory.getMap(tipo);
+		InterfaceMap<String,String> map = factory.getMap(tipo);//Cartas disponibles
+		InterfaceMap<String,String> mapC = factory.getMap(tipo); //Castas del usuario
 		if (map instanceof Hash) {
 			System.out.println("El mapa a utilizar es: HashMap");
 		}
@@ -117,7 +116,30 @@ public class Main {
 		    			}
 		    		}
 		    		if (r == 3) {
-	
+						ArrayList<String> cartord = new ArrayList<String>();
+		    			int trampa = 0;
+		    			int hechizo = 0;
+		    			int monstruo = 0;
+		    			//Para eliminar las llaves duplicadas
+		    			LinkedHashSet<String> hashSet = new LinkedHashSet<String>(valu);
+		    			ArrayList<String> newVal = new ArrayList<>(hashSet);
+		    			//Luego de eliminar, se obtiene el tipo y nombre
+		    			for (Map.Entry<String, String> entry : map.entrySet()){
+		    				cartord.add(entry.getValue() + " : " + entry.getKey());
+		    				if (entry.getValue().equalsIgnoreCase("trampa")){
+		    					trampa++;
+		    				}	else if (entry.getValue().equalsIgnoreCase("hechizo")){
+		    					hechizo++;
+		    				} else if (entry.getValue().equalsIgnoreCase("monstruo")){
+		    					monstruo++;
+		    				}
+		    			}cartord.add(0,"Tipo__________ : Nombre________");
+		    			cartord.add("Tipo de monstruo: "+ monstruo);
+		    			cartord.add("Tipo de hechizo: "+ hechizo);
+		    			cartord.add("Tipo de trampa: "+ trampa);
+
+		    			System.out.println(cartord) ;
+
 		    		}
 	    		}while (r<4);
 	    		
@@ -126,17 +148,19 @@ public class Main {
 	    		do {
 	    			System.out.println("1.Mostrar Cartas (desordenadas)\n2.Mostrar Cartas (Ordenadas por tipo)");
 		    		i = teclado.nextInt();
-		    		ArrayList<String> valu = new ArrayList<String>();
 		    		if (i == 1) {
 		    			ArrayList<String> cartord = new ArrayList<String>();
 		    			int trampa = 0;
 		    			int hechizo = 0;
 		    			int monstruo = 0;
 
-		    			cartord.add(0,"Tipo__________ : Nombre________");
-		    			cartord.add(0, "______________________________");
-		    			for (Map.Entry<String, String> entry : userCollection.entrySet()){
-		    				cartord.add(entry.getKey() + " : " + entry.getValue());
+		    			//Para eliminar las llaves duplicadas
+		    			LinkedHashSet<String> hashSet = new LinkedHashSet<String>(valu);
+		    			ArrayList<String> newVal = new ArrayList<>(hashSet);
+
+		    			//Luego de eliminar, se obtiene el tipo y nombre
+		    			for (Map.Entry<String, String> entry : mapC.entrySet()){
+		    				cartord.add(entry.getValue() + " : " + entry.getKey());
 		    				if (entry.getValue().equalsIgnoreCase("trampa")){
 		    					trampa++;
 		    				}	else if (entry.getValue().equalsIgnoreCase("hechizo")){
@@ -144,10 +168,11 @@ public class Main {
 		    				} else if (entry.getValue().equalsIgnoreCase("monstruo")){
 		    					monstruo++;
 		    				}
-		    			}
+		    			}cartord.add(0,"Tipo__________ : Nombre________");
 		    			cartord.add("Tipo de monstruo: "+ monstruo);
 		    			cartord.add("Tipo de hechizo: "+ hechizo);
 		    			cartord.add("Tipo de trampa: "+ trampa);
+
 		    			System.out.println(cartord) ;
 
 		    		}//Mostrar las cartas ordenadas por tipo
@@ -162,7 +187,7 @@ public class Main {
 		    			ArrayList<String> newVal = new ArrayList<>(hashSet);
 
 		    			//Luego de eliminar, se obtiene el tipo y nombre
-		    			for (Map.Entry<String, String> entry : userCollection.entrySet()){
+		    			for (Map.Entry<String, String> entry : mapC.entrySet()){
 		    				cartord.add(entry.getValue() + " : " + entry.getKey());
 		    				if (entry.getValue().equalsIgnoreCase("trampa")){
 		    					trampa++;
@@ -173,8 +198,6 @@ public class Main {
 		    				}
 		    			} Collections.sort(cartord);
 		    			cartord.add(0,"Tipo__________ : Nombre________");
-		    			cartord.add(0, "______________________________");
-		    			cartord.add(0, "______________________________");
 		    			cartord.add("Tipo de monstruo: "+ monstruo);
 		    			cartord.add("Tipo de hechizo: "+ hechizo);
 		    			cartord.add("Tipo de trampa: "+ trampa);

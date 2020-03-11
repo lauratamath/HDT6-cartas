@@ -57,18 +57,20 @@ public class Main {
 	    	  comprobante = false;
 	    	  
 	    	  for (int i = 0; i<linea.length();i++) {
-	    		  if (linea.substring(i, i+1) != "|" && comprobante == false ) {
+	    		  if (!linea.substring(i, i+1).equals("|")&& comprobante == false ) {
 	    			 key = key +  linea.substring(i, i+1);
+	    			
 	    		  }if (linea.substring(i, i+1).equals("|") ) {
 	    			  comprobante = true;
 	    		  }
-	    		  if (comprobante == true) {
+	    		  if (comprobante == true&&!linea.substring(i, i+1).equals("|")) {
 	    			  val = val + linea.substring(i, i+1);
 	    		  }
 	    		  
 	    	  }
+	    	  //System.out.println(val);
 	    	  map.put(key,val);
-    		 // System.out.println(map.get(key));
+    		  System.out.println(map.get(key));
 	    	  
 	    	  
 	      }
@@ -85,6 +87,7 @@ public class Main {
 	    
 	    do {
 	    	System.out.println("Que desea hacer?");
+	    	System.out.println(map.get(" Altergeist Pixiel"));
 	    	System.out.println("1.Agregar una carta a la coleccion\n2.Datos de cartas\n3.Datos de cartas en la coleccion\n4.Salir");
 	    	n = teclado.nextInt();
 	    	if (n == 1) {

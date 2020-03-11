@@ -108,7 +108,7 @@ public class Main {
 			    			System.out.println("Carta: " + key + " Tipo: " + map.get(key));
 			    		}else {
 			    			System.out.println("La carta ingresada no existe");
-			    		}
+			    		} r=0;
 		    		}
 		    		if (r == 2) {
 		    			for (Map.Entry<String, String> cartas:map.entrySet())

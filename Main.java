@@ -119,7 +119,7 @@ public class Main {
 	    		key = sc.nextLine();
 	    		if (map.containsKey(key)) {
 	    			mapC.put(key, map.get(key));
-	    			System.out.println("--Carta añanida con éxito--");
+	    			System.out.println("--Carta añanida con éxito--\n");
 	    		}else {
 	    			System.out.println("La carta ingresada no existe");
 	    		}

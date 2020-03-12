@@ -6,13 +6,13 @@
  * Factory
  */
 public class Factory<K,V> {
-	public InterfaceMap<K,V> getMap (String tipo){
+	public InterfaceMap<K,V> getMap (int tipo){
 		switch (tipo){
-			case "1":
+			case 1:
 				return new Hash<K,V>();
-			case "2":
+			case 2:
 				return new Linked<K,V>();
-			case "3":
+			case 3:
 				return new Tree<K,V>();
 		}
 		return null;

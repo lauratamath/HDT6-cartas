@@ -16,8 +16,8 @@ public class Linked<K,V> implements InterfaceMap<K,V> {
 	**/
 
 	/**
-	Pre: Con la ayuda de un map se obtiene el tamaño
-	Post: Se obtiene el tamaño del map
+	*@pre: Con la ayuda de un map se obtiene el tamaño
+	*@post: Se obtiene el tamaño del map
 	*/
 	@Override
 	public int size() {
@@ -25,8 +25,8 @@ public class Linked<K,V> implements InterfaceMap<K,V> {
 		return map.size();
 	}
 	/**
-	Pre: Se cuenta con una llave y un valor
-	Post: Se asigna un valor a la llave
+	*@pre: Se cuenta con una llave y un valor
+	*@post: Se asigna un valor a la llave
 	*/
 	@Override
 	public void put(K k, V v) {
@@ -34,8 +34,8 @@ public class Linked<K,V> implements InterfaceMap<K,V> {
 		map.put(k,v);
 	}
 	/**
-	Pre: La llave existe
-	Post: Retorna el valor asignado a la llave
+	*@pre: La llave existe
+	*@post: Retorna el valor asignado a la llave
 	*/	
 	@Override
 	public V get(K k) {
@@ -43,8 +43,8 @@ public class Linked<K,V> implements InterfaceMap<K,V> {
 		return map.get(k);
 	}
 	/**
-	Pre: La llave existe
-	Post: Se remueve el valor de la llave y la llave, ademas de que retorna el valor removido
+	*@pre: La llave existe
+	*@post: Se remueve el valor de la llave y la llave, ademas de que retorna el valor removido
 	*/
 	@Override
 	public V remove(K k) {
@@ -52,8 +52,8 @@ public class Linked<K,V> implements InterfaceMap<K,V> {
 		return map.remove(k);
 	}
 	/**
-	Pre: La llave existe
-	Post: Retorna verdadero si la llave se encuentra en el mapa
+	*@pre: La llave existe
+	*@post: Retorna verdadero si la llave se encuentra en el mapa
 	*/	
 	@Override
 	public boolean containsKey(K k) {
@@ -66,8 +66,8 @@ public class Linked<K,V> implements InterfaceMap<K,V> {
 		
 	}
 	/**
-	Pre: El valor existe
-	Post: Retorna verdadero si el valor se encuentra en el mapa
+	*@pre: El valor existe
+	*@post: Retorna verdadero si el valor se encuentra en el mapa
 	*/	
 	@Override
 	public boolean containsValue(V v) {
